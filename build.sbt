@@ -14,7 +14,7 @@ spName := "MrPowers/spark-stringmetric"
 
 spShortDescription := "stringmetric algorithms in spark"
 
-spDescription := "Popular phonetic and string matching algorithms easily accessible for Spark analyses"
+spDescription := "Spark functions to run popular phonetic and string matching algorithms"
 
 version := "2.2.0_0.1.0"
 
