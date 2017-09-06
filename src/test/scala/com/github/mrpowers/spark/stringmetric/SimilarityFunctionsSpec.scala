@@ -91,4 +91,44 @@ class SimilarityFunctionsSpec
 
   }
 
+  describe("jaccard") {
+
+    it("computes the jaccard metric") {
+
+      val sourceDF = spark.createDF(
+        List(
+          ("night", "nacht"),
+          ("context", "contact"),
+          (null, "nacht"),
+          (null, null)
+        ), List(
+          ("word1", StringType, true),
+          ("word2", StringType, true)
+        )
+      )
+
+      val actualDF = sourceDF.withColumn(
+        "w1_w2_jaccard",
+        SimilarityFunctions.jaccard(col("word1"), col("word2"), lit(1))
+      )
+
+      val expectedDF = spark.createDF(
+        List(
+          ("night", "nacht", 0.42857142857142855),
+          ("context", "contact", 0.5555555555555556),
+          (null, "nacht", null),
+          (null, null, null)
+        ), List(
+          ("word1", StringType, true),
+          ("word2", StringType, true),
+          ("w1_w2_jaccard", DoubleType, true)
+        )
+      )
+
+      assertSmallDataFrameEquality(actualDF, expectedDF)
+
+    }
+
+  }
+
 }
