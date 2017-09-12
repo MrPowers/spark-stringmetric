@@ -61,46 +61,6 @@ class SimilarityFunctionsSpec
 
   }
 
-  describe("dice_sorensen") {
-
-    it("runs the dice sorensen metric") {
-
-      val sourceDF = spark.createDF(
-        List(
-          ("night", "nacht"),
-          ("cat", "cat"),
-          (null, "nacht"),
-          (null, null)
-        ), List(
-          ("word1", StringType, true),
-          ("word2", StringType, true)
-        )
-      )
-
-      val actualDF = sourceDF.withColumn(
-        "w1_w2_dice_sorensen",
-        SimilarityFunctions.dice_sorensen(col("word1"), col("word2"), lit(1))
-      )
-
-      val expectedDF = spark.createDF(
-        List(
-          ("night", "nacht", 0.6),
-          ("cat", "cat", 1.0),
-          (null, "nacht", null),
-          (null, null, null)
-        ), List(
-          ("word1", StringType, true),
-          ("word2", StringType, true),
-          ("w1_w2_dice_sorensen", DoubleType, true)
-        )
-      )
-
-      assertSmallDataFrameEquality(actualDF, expectedDF)
-
-    }
-
-  }
-
   describe("fuzzy_score") {
 
     it("calculates the fuzzy score of two string") {
