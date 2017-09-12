@@ -227,4 +227,46 @@ class SimilarityFunctionsSpec
 
   }
 
+  describe("jaro_winkler") {
+
+    it("finds the Jaro Winkler Distance which indicates the similarity score between two strings") {
+
+      val sourceDF = spark.createDF(
+        List(
+          ("dwayne", "duane"),
+          ("jones", "johnson"),
+          ("fvie", "ten"),
+          (null, "nacht"),
+          (null, null)
+        ), List(
+          ("word1", StringType, true),
+          ("word2", StringType, true)
+        )
+      )
+
+      val actualDF = sourceDF.withColumn(
+        "w1_w2_jaro_winkler",
+        SimilarityFunctions.jaro_winkler(col("word1"), col("word2"))
+      )
+
+      val expectedDF = spark.createDF(
+        List(
+          ("dwayne", "duane", 0.8400000000000001),
+          ("jones", "johnson", 0.8323809523809523),
+          ("fvie", "ten", 0.0),
+          (null, "nacht", null),
+          (null, null, null)
+        ), List(
+          ("word1", StringType, true),
+          ("word2", StringType, true),
+          ("w1_w2_jaro_winkler", DoubleType, true)
+        )
+      )
+
+      assertSmallDataFrameEquality(actualDF, expectedDF)
+
+    }
+
+  }
+
 }
