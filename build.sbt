@@ -23,10 +23,9 @@ sparkVersion := "2.2.0"
 
 sparkComponents ++= Seq("sql")
 
-spDependencies += "MrPowers/spark-daria:2.2.0_0.12.0"
+libraryDependencies += "org.apache.commons" % "commons-text" % "1.1" % "provided"
 
-libraryDependencies += "org.apache.commons" % "commons-text" % "1.1"
-
+libraryDependencies += "mrpowers" % "spark-daria" % "2.2.0_0.12.0" % "test"
 libraryDependencies += "MrPowers" % "spark-fast-tests" % "2.2.0_0.5.0" % "test"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 
