@@ -1,0 +1,18 @@
+package com.github.mrpowers.spark.stringmetric
+
+import org.apache.spark.sql.functions._
+
+import org.apache.commons.codec.language.DoubleMetaphone
+
+object PhoneticAlgorithms {
+
+  val double_metaphone = udf[Option[String], String](doubleMetaphoneFun)
+
+  def doubleMetaphoneFun(s1: String): Option[String] = {
+    val str1 = Option(s1).getOrElse(return None)
+    if (str1.equals("")) return None
+    val dm = new DoubleMetaphone()
+    Some(dm.encode(str1))
+  }
+
+}

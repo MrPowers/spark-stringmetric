@@ -1,9 +1,10 @@
 package com.github.mrpowers.spark.stringmetric
 
+import org.apache.spark.sql.functions._
+
 import java.util.Locale
 
 import com.rockymadden.stringmetric.similarity._
-import org.apache.spark.sql.functions._
 import org.apache.commons.text.similarity._
 
 object SimilarityFunctions {
