@@ -187,9 +187,9 @@ class SimilarityFunctionsSpec
 
   }
 
-  describe("jaccard") {
+  describe("jaccard_similarity") {
 
-    it("computes the jaccard metric") {
+    it("computes the jaccard similarity") {
 
       val sourceDF = spark.createDF(
         List(
@@ -205,13 +205,13 @@ class SimilarityFunctionsSpec
 
       val actualDF = sourceDF.withColumn(
         "w1_w2_jaccard",
-        SimilarityFunctions.jaccard(col("word1"), col("word2"), lit(1))
+        SimilarityFunctions.jaccard_similarity(col("word1"), col("word2"))
       )
 
       val expectedDF = spark.createDF(
         List(
-          ("night", "nacht", 0.42857142857142855),
-          ("context", "contact", 0.5555555555555556),
+          ("night", "nacht", 0.43),
+          ("context", "contact", 0.57),
           (null, "nacht", null),
           (null, null, null)
         ), List(
