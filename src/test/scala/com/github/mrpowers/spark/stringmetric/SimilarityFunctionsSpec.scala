@@ -11,6 +11,56 @@ class SimilarityFunctionsSpec
     with SparkSessionTestWrapper
     with DataFrameComparer {
 
+  describe("cosine_distance") {
+
+    it("runs the cosine distance metric") {
+
+      val sourceDF = spark.createDF(
+        List(
+          ("night", "nacht"),
+          ("cat", "cat"),
+          (null, "nacht"),
+          (null, null)
+        ), List(
+          ("word1", StringType, true),
+          ("word2", StringType, true)
+        )
+      )
+
+      val actualDF = sourceDF.withColumn(
+        "w1_w2_cosine_distance",
+        SimilarityFunctions.cosine_distance(col("word1"), col("word2"))
+      )
+
+      val expectedDF = spark.createDF(
+        List(
+          ("night", "nacht", 1.0),
+          ("cat", "cat", 0.0),
+          (null, "nacht", null),
+          (null, null, null)
+        ), List(
+          ("word1", StringType, true),
+          ("word2", StringType, true),
+          ("w1_w2_cosine_distance", DoubleType, true)
+        )
+      )
+
+      assertSmallDataFrameEquality(actualDF, expectedDF)
+
+    }
+
+  }
+
+  describe("cosineDistanceFun") {
+
+    it("calculates the cosine distance") {
+
+      assert(SimilarityFunctions.cosineDistanceFun("blah", "black") === Some(1.0))
+
+    }
+
+  }
+
   describe("dice_sorensen") {
 
     it("runs the dice sorensen metric") {
@@ -46,6 +96,52 @@ class SimilarityFunctionsSpec
       )
 
       assertSmallDataFrameEquality(actualDF, expectedDF)
+
+    }
+
+  }
+
+  describe("fuzzy_score") {
+
+    it("calculates the fuzzy score of two string") {
+
+      val sourceDF = spark.createDF(
+        List(
+          ("", ""),
+          ("workshop", "b"),
+          ("room", "o"),
+          ("workshop", "w"),
+          ("workshop", "ws"),
+          ("workshop", "wo"),
+          ("Apache Software Foundation", "asf"),
+          (null, null)
+        ), List(
+          ("word1", StringType, true),
+          ("word2", StringType, true)
+        )
+      )
+
+      val actualDF = sourceDF.withColumn(
+        "w1_w2_fuzzy_score",
+        SimilarityFunctions.fuzzy_score(col("word1"), col("word2"))
+      )
+
+      val expectedDF = spark.createDF(
+        List(
+          ("", "", 0),
+          ("workshop", "b", 0),
+          ("room", "o", 1),
+          ("workshop", "w", 1),
+          ("workshop", "ws", 2),
+          ("workshop", "wo", 2),
+          ("Apache Software Foundation", "asf", 3),
+          (null, null, null)
+        ), List(
+          ("word1", StringType, true),
+          ("word2", StringType, true),
+          ("w1_w2_fuzzy_score", IntegerType, true)
+        )
+      )
 
     }
 
