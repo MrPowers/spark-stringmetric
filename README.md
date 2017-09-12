@@ -4,7 +4,7 @@ Making similarity functions and phonetic algorithms readily available for fuzzy 
 
 ## Project Setup
 
-Update your `build.sbt` files to import the libraries.
+Update your `build.sbt` file to import the libraries.
 
 ```
 libraryDependencies += "org.apache.commons" % "commons-text" % "1.1"
@@ -19,7 +19,7 @@ libraryDependencies += "mrpowers" % "spark-stringmetric" % "2.2.0_0.1.0"
 * `jaccard_similarity`
 * `jaro_winkler`
 
-Import the functions.
+How to import the functions.
 
 ```scala
 import com.github.mrpowers.spark.stringmetric.SimilarityFunctions._
@@ -63,3 +63,48 @@ We can run `actualDF.show()` to view the `w1_w2_jaccard` column that's been appe
 ```
 
 ## PhoneticAlgorithms
+
+* `double_metaphone`
+* `nysiis`
+* `refined_soundex`
+
+How to import the functions.
+
+```scala
+import com.github.mrpowers.spark.stringmetric.PhoneticAlgorithms._
+```
+
+Here's an example on how to use the `refined_soundex` function.
+
+Suppose we have the following `sourceDF`:
+
+```
++-----+
+|word1|
++-----+
+|night|
+|  cat|
+| null|
++-----+
+```
+
+Let's run the `refined_soundex` function.
+
+```scala
+val actualDF = sourceDF.withColumn(
+  "word1_refined_soundex",
+  refined_soundex(col("word1"))
+)
+```
+
+We can run `actualDF.show()` to view the `word1_refined_soundex` column that's been appended to the DataFrame.
+
+```
++-----+---------------------+
+|word1|word1_refined_soundex|
++-----+---------------------+
+|night|               N80406|
+|  cat|                 C306|
+| null|                 null|
++-----+---------------------+
+```
