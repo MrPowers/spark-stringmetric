@@ -4,7 +4,7 @@ import java.util.Locale
 
 import com.rockymadden.stringmetric.similarity._
 import org.apache.spark.sql.functions._
-import org.apache.commons.text.similarity.{CosineDistance, FuzzyScore}
+import org.apache.commons.text.similarity.{CosineDistance, FuzzyScore, HammingDistance}
 
 object SimilarityFunctions {
 
@@ -39,7 +39,8 @@ object SimilarityFunctions {
   def hammingFun(s1: String, s2: String): Option[Int] = {
     val str1 = Option(s1).getOrElse(return None)
     val str2 = Option(s2).getOrElse(return None)
-    HammingMetric.compare(str1, str2)
+    val h = new HammingDistance()
+    Some(h.apply(str1, str2))
   }
 
   val jaccard = udf[Option[Double], String, String, Int](jaccardFun)
