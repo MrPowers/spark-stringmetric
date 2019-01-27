@@ -18,8 +18,8 @@ spDescription := "Spark functions to run popular phonetic and string matching al
 
 version := "2.2.0_0.1.0"
 
-scalaVersion := "2.11.8"
-sparkVersion := "2.2.0"
+scalaVersion := "2.11.12"
+sparkVersion := "2.4.0"
 
 sparkComponents ++= Seq("sql")
 
