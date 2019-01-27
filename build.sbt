@@ -16,7 +16,7 @@ spShortDescription := "stringmetric algorithms in spark"
 
 spDescription := "Spark functions to run popular phonetic and string matching algorithms"
 
-version := "2.2.0_0.1.0"
+version := "0.2.0"
 
 scalaVersion := "2.11.12"
 sparkVersion := "2.4.0"
