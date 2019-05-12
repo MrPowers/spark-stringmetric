@@ -19,9 +19,9 @@ spDescription := "Spark functions to run popular phonetic and string matching al
 version := "0.2.0"
 
 scalaVersion := "2.11.12"
-sparkVersion := "2.4.0"
+sparkVersion := "2.4.2"
 
-libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.0" % "provided"
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.2" % "provided"
 
 libraryDependencies += "org.apache.commons" % "commons-text" % "1.1" % "provided"
 
