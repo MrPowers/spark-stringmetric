@@ -109,7 +109,7 @@ class SimilarityFunctionsSpec
 
   describe("hamming") {
 
-    it("computes the hamming metric") {
+    it("computes the hamming metric for single byte chars") {
 
       val sourceDF = spark.createDF(
         List(
@@ -134,6 +134,44 @@ class SimilarityFunctionsSpec
           ("1011101", "1001001", 2),
           (null, "nacht", null),
           (null, null, null)
+        ), List(
+          ("word1", StringType, true),
+          ("word2", StringType, true),
+          ("w1_w2_hamming", IntegerType, true)
+        )
+      )
+
+      assertSmallDataFrameEquality(actualDF, expectedDF)
+
+    }
+
+    it("computes the hamming metric for multi byte chars") {
+
+      val sourceDF = spark.createDF(
+        List(
+          ("aab", "aaa"),
+          ("aa¢", "aaa"),  // ¢ is 2 bytes
+          ("aaह", "aaa"),  // ह is 3 bytes
+          ("aa€", "aaa"),  // € is 3 bytes
+          ("aa𐍈", "aaa")   // 𐍈 is 4 bytes
+        ), List(
+          ("word1", StringType, true),
+          ("word2", StringType, true)
+        )
+      )
+
+      val actualDF = sourceDF.withColumn(
+        "w1_w2_hamming",
+        SimilarityFunctions.hamming(col("word1"), col("word2"))
+      )
+
+      val expectedDF = spark.createDF(
+        List(
+          ("aaa", "aab", 1),
+          ("aa¢", "aac", 1),  // ¢ is 2 bytes
+          ("aaह", "aaa", 1),  // ह is 3 bytes
+          ("aa€", "aaa", 1),  // € is 3 bytes
+          ("aa𐍈", "aaa", 1)   // 𐍈 is 4 bytes
         ), List(
           ("word1", StringType, true),
           ("word2", StringType, true),
