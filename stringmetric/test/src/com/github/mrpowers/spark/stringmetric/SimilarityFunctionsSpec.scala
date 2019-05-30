@@ -125,7 +125,7 @@ class SimilarityFunctionsSpec
 
       val actualDF = sourceDF.withColumn(
         "w1_w2_hamming",
-        functions.hamming(col("word1"), col("word2"))
+        SimilarityFunctions.hamming(col("word1"), col("word2"))
       )
 
       val expectedDF = spark.createDF(

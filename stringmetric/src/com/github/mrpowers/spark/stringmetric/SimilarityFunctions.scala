@@ -1,12 +1,22 @@
 package com.github.mrpowers.spark.stringmetric
 
+import com.github.mrpowers.spark.stringmetric.expressions.HammingDistance
+import org.apache.spark.sql.Column
+import org.apache.spark.sql.catalyst.expressions.Expression
 import org.apache.spark.sql.functions._
 
 import java.util.Locale
 
-import org.apache.commons.text.similarity._
+import org.apache.commons.text.similarity.{
+  CosineDistance,
+  JaccardSimilarity,
+  JaroWinklerDistance,
+  FuzzyScore
+}
+
 
 object SimilarityFunctions {
+  private def withExpr(expr: Expression): Column = new Column(expr)
 
   val cosine_distance = udf[Option[Double], String, String](cosineDistanceFun)
 
@@ -26,13 +36,8 @@ object SimilarityFunctions {
     Some(f.fuzzyScore(str1, str2))
   }
 
-  val hamming = udf[Option[Int], String, String](hammingFun)
-
-  def hammingFun(s1: String, s2: String): Option[Int] = {
-    val str1 = Option(s1).getOrElse(return None)
-    val str2 = Option(s2).getOrElse(return None)
-    val h = new HammingDistance()
-    Some(h.apply(str1, str2))
+  def hamming(s1: Column, s2: Column): Column = withExpr {
+    HammingDistance(s1.expr, s2.expr)
   }
 
   val jaccard_similarity = udf[Option[Double], String, String](jaccardSimilarityFun)
