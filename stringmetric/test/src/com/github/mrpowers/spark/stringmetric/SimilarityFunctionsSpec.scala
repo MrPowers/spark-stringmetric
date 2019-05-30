@@ -153,7 +153,10 @@ class SimilarityFunctionsSpec
           ("aa¢", "aaa"),  // ¢ is 2 bytes
           ("aaह", "aaa"),  // ह is 3 bytes
           ("aa€", "aaa"),  // € is 3 bytes
-          ("aa𐍈", "aaa")   // 𐍈 is 4 bytes
+          ("aa𐍈", "aaa"),  // 𐍈 is 4 bytes
+          ("𐍈€¢", "aaa"),
+          ("𐍈€a¢€b", "b€𐍈𐍈ab"),
+          ("𐍈€a¢€b", "b€𐍈𐍈€b")
         ), List(
           ("word1", StringType, true),
           ("word2", StringType, true)
@@ -171,7 +174,10 @@ class SimilarityFunctionsSpec
           ("aa¢", "aaa", 1),  // ¢ is 2 bytes
           ("aaह", "aaa", 1),  // ह is 3 bytes
           ("aa€", "aaa", 1),  // € is 3 bytes
-          ("aa𐍈", "aaa", 1)   // 𐍈 is 4 bytes
+          ("aa𐍈", "aaa", 1),  // 𐍈 is 4 bytes
+          ("𐍈€¢", "aaa", 3),
+          ("𐍈€a¢€b", "b€𐍈𐍈ab", 4),
+          ("𐍈€a¢€b", "b€𐍈𐍈€b", 3)
         ), List(
           ("word1", StringType, true),
           ("word2", StringType, true),
