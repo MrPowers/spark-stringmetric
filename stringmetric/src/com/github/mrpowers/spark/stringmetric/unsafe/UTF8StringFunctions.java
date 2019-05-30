@@ -8,7 +8,7 @@ public class UTF8StringFunctions {
         int distance = 0;
         byte[] leftBytes = left.getBytes();
         byte[] rightBytes = right.getBytes();
-        for (int i = 0; i < left.numChars(); i++) {
+        for (int i = 0; i < left.numBytes(); i++) {
             if (leftBytes[i] != rightBytes[i]) {
                 distance++;
             }
