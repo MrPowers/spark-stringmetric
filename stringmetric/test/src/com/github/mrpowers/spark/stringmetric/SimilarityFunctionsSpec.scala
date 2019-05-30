@@ -167,8 +167,8 @@ class SimilarityFunctionsSpec
 
       val expectedDF = spark.createDF(
         List(
-          ("aaa", "aab", 1),
-          ("aa¢", "aac", 1),  // ¢ is 2 bytes
+          ("aab", "aaa", 1),
+          ("aa¢", "aaa", 1),  // ¢ is 2 bytes
           ("aaह", "aaa", 1),  // ह is 3 bytes
           ("aa€", "aaa", 1),  // € is 3 bytes
           ("aa𐍈", "aaa", 1)   // 𐍈 is 4 bytes
