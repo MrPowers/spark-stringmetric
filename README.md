@@ -108,3 +108,15 @@ We can run `actualDF.show()` to view the `word1_refined_soundex` column that's b
 | null|                 null|
 +-----+---------------------+
 ```
+
+## Release
+
+To make a SNAPSHOT release, update `publishVersion` to be something like this in the `build.sc` file:
+
+```scala
+def publishVersion = s"0.3.0_spark${binaryVersion(crossSparkVersion)}-SNAPSHOT"
+```
+
+```
+mill mill.scalalib.PublishModule/publishAll --sonatypeCreds "usename:password" --publishArtifacts __.publishArtifacts --release false
+```
