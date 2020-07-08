@@ -2,6 +2,8 @@
 
 Making similarity functions and phonetic algorithms readily available for fuzzy matching analyses in Spark.
 
+See [ceja](https://github.com/MrPowers/ceja) if you're using the PySpark API.
+
 ## Project Setup
 
 Update your `build.sbt` file to import the libraries.
