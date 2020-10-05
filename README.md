@@ -10,7 +10,7 @@ Update your `build.sbt` file to import the libraries.
 
 ```
 libraryDependencies += "org.apache.commons" % "commons-text" % "1.1"
-libraryDependencies += "mrpowers" % "spark-stringmetric" % "2.2.0_0.1.0"
+libraryDependencies += "com.github.mrpowers" %% "spark-stringmetric" % "0.3.0"
 ```
 
 ## SimilarityFunctions
@@ -113,12 +113,17 @@ We can run `actualDF.show()` to view the `word1_refined_soundex` column that's b
 
 ## Release
 
-To make a SNAPSHOT release, update `publishVersion` to be something like this in the `build.sc` file:
+Run `sbt` to open the SBT console.
 
-```scala
-def publishVersion = s"0.3.0_spark${binaryVersion(crossSparkVersion)}-SNAPSHOT"
-```
+Run `> ; + publishSigned; sonatypeBundleRelease` to create the JAR files and release them to Maven.  These commands are made available by the [sbt-sonatype](https://github.com/xerial/sbt-sonatype) plugin.
+
+When the release command is run, you'll be prompted to enter your GPG passphrase.
+
+The Sonatype credentials should be stored in the `~/.sbt/sonatype_credentials` file in this format:
 
 ```
-mill mill.scalalib.PublishModule/publishAll --sonatypeCreds "usename:password" --publishArtifacts __.publishArtifacts --release false
+realm=Sonatype Nexus Repository Manager
+host=oss.sonatype.org
+user=$USERNAME
+password=$PASSWORD
 ```
