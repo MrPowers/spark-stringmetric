@@ -9,7 +9,7 @@ val sparkVersion = "2.4.4"
 libraryDependencies += "org.apache.commons" % "commons-text" % "1.1" % "provided"
 libraryDependencies += "org.apache.spark" %% "spark-sql" % sparkVersion % "provided"
 libraryDependencies += "com.github.mrpowers" %% "spark-fast-tests" % "0.21.3" % "test"
-libraryDependencies += "com.github.mrpowers" %% "spark-daria" % "0.38.0" % "test"
+libraryDependencies += "com.github.mrpowers" %% "spark-daria" % "0.38.2" % "test"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 
 artifactName := { (sv: ScalaVersion, module: ModuleID, artifact: Artifact) =>
