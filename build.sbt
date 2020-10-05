@@ -24,11 +24,11 @@ javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:+CMSClassUnloadingEnabled", "-
 
 licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT"))
 
-homepage := Some(url("https://github.com/MrPowers/spark-daria"))
+homepage := Some(url("https://github.com/MrPowers/spark-stringmetric"))
 developers ++= List(
   Developer("MrPowers", "Matthew Powers", "@MrPowers", url("https://github.com/MrPowers"))
 )
-scmInfo := Some(ScmInfo(url("https://github.com/MrPowers/spark-daria"), "git@github.com:MrPowers/spark-daria.git"))
+scmInfo := Some(ScmInfo(url("https://github.com/MrPowers/spark-stringmetric"), "git@github.com:MrPowers/spark-stringmetric.git"))
 
 updateOptions := updateOptions.value.withLatestSnapshots(false)
 
