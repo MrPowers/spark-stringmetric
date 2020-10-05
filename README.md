@@ -1,6 +1,6 @@
 # spark-stringmetric
 
-Making similarity functions and phonetic algorithms readily available for fuzzy matching analyses in Spark.
+String similarity functions and phonetic algorithms for Spark.
 
 See [ceja](https://github.com/MrPowers/ceja) if you're using the PySpark API.
 
