@@ -13,6 +13,10 @@ libraryDependencies += "org.apache.commons" % "commons-text" % "1.1"
 libraryDependencies += "com.github.mrpowers" %% "spark-stringmetric" % "0.3.0"
 ```
 
+You can find the spark-daria [Scala 2.11 versions here](https://repo1.maven.org/maven2/com/github/mrpowers/spark-stringmetric.11/) and the [Scala 2.12 versions here](https://repo1.maven.org/maven2/com/github/mrpowers/spark-stringmetric.12/).
+
+You should generally use Scala 2.11 with Spark 2 and Scala 2.12 with Spark 3.
+
 ## SimilarityFunctions
 
 * `cosine_distance`
