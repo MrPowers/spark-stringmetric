@@ -7,4 +7,4 @@ resolvers += Resolver.bintrayIvyRepo(
 
 addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.4")
 addSbtPlugin("com.jsuereth" % "sbt-pgp" % "2.0.1")
-
+addSbtPlugin("com.typesafe.sbt" % "sbt-ghpages" % "0.6.3")

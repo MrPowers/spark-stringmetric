@@ -37,3 +37,7 @@ publishMavenStyle := true
 publishTo := sonatypePublishToBundle.value
 
 Global/useGpgPinentry := true
+
+// sbt-ghpages plugin: https://github.com/sbt/sbt-ghpages
+enablePlugins(GhpagesPlugin)
+git.remoteRepo := "git@github.com:MrPowers/spark-stringmetric.git"
