@@ -121,6 +121,12 @@ We can run `actualDF.show()` to view the `word1_refined_soundex` column that's b
 
 ## Release
 
+1. Create GitHub tag
+
+2. Build documentation with `sbt ghpagesPushSite`
+
+3. Publish JAR
+
 Run `sbt` to open the SBT console.
 
 Run `> ; + publishSigned; sonatypeBundleRelease` to create the JAR files and release them to Maven.  These commands are made available by the [sbt-sonatype](https://github.com/xerial/sbt-sonatype) plugin.
