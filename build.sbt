@@ -39,5 +39,6 @@ publishTo := sonatypePublishToBundle.value
 Global/useGpgPinentry := true
 
 // sbt-ghpages plugin: https://github.com/sbt/sbt-ghpages
+enablePlugins(SiteScaladocPlugin)
 enablePlugins(GhpagesPlugin)
 git.remoteRepo := "git@github.com:MrPowers/spark-stringmetric.git"

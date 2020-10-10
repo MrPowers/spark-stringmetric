@@ -115,6 +115,10 @@ We can run `actualDF.show()` to view the `word1_refined_soundex` column that's b
 +-----+---------------------+
 ```
 
+## API Documentation
+
+[Here is the latest API documentation](https://mrpowers.github.io/spark-stringmetric/latest/api/#package).
+
 ## Release
 
 Run `sbt` to open the SBT console.
