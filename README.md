@@ -141,3 +141,9 @@ host=oss.sonatype.org
 user=$USERNAME
 password=$PASSWORD
 ```
+
+## Microsite
+
+The microsite for this project [is available here](https://mrpowers.github.io/spark-stringmetric/).  It's built with the [sbt-microsite](https://github.com/47degrees/sbt-microsites) plugin.
+
+The `sbt publishMicrosite` command creates a new microsite based on the Markdown files stored in the `docs/src/main/mdoc` folder.
