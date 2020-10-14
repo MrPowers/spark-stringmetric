@@ -1,5 +1,10 @@
 organization := "com.github.mrpowers"
+
+// required settings for sbt-microsites
 name := "spark-stringmetric"
+description := "Popular phonetic and string matching algorithms implemented in Spark"
+organizationName := "MrPowers"
+organizationHomepage := Some(url("https://github.com/MrPowers"))
 
 version := "0.3.0"
 crossScalaVersions := Seq("2.11.12", "2.12.10")
@@ -42,3 +47,10 @@ Global/useGpgPinentry := true
 enablePlugins(SiteScaladocPlugin)
 enablePlugins(GhpagesPlugin)
 git.remoteRepo := "git@github.com:MrPowers/spark-stringmetric.git"
+
+// sbt-microsites plugin:
+enablePlugins(MicrositesPlugin)
+micrositeDescription := "String algorithms in Spark"
+micrositeUrl := "https://mrpowers.github.io"
+micrositeBaseUrl := "/spark-stringmetric"
+micrositeDocumentationUrl := "docs"
