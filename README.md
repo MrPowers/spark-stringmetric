@@ -2,7 +2,7 @@
 
 String similarity functions and phonetic algorithms for Spark.
 
-See [ceja](https://github.com/MrPowers/ceja) if you're using the PySpark API.
+See [ceja](https://github.com/MrPowers/ceja) if you're using PySpark.
 
 ## Project Setup
 
@@ -10,12 +10,15 @@ Update your `build.sbt` file to import the libraries.
 
 ```
 libraryDependencies += "org.apache.commons" % "commons-text" % "1.1"
+
+// Spark 3
+libraryDependencies += "com.github.mrpowers" %% "spark-stringmetric" % "0.4.0"
+
+// Spark 2
 libraryDependencies += "com.github.mrpowers" %% "spark-stringmetric" % "0.3.0"
 ```
 
 You can find the spark-daria [Scala 2.11 versions here](https://repo1.maven.org/maven2/com/github/mrpowers/spark-stringmetric.11/) and the [Scala 2.12 versions here](https://repo1.maven.org/maven2/com/github/mrpowers/spark-stringmetric.12/).
-
-You should generally use Scala 2.11 with Spark 2 and Scala 2.12 with Spark 3.
 
 ## SimilarityFunctions
 
@@ -131,7 +134,7 @@ Run `sbt` to open the SBT console.
 
 Run `> ; + publishSigned; sonatypeBundleRelease` to create the JAR files and release them to Maven.  These commands are made available by the [sbt-sonatype](https://github.com/xerial/sbt-sonatype) plugin.
 
-When the release command is run, you'll be prompted to enter your GPG passphrase.
+After running the release command, you'll be prompted to enter your GPG passphrase.
 
 The Sonatype credentials should be stored in the `~/.sbt/sonatype_credentials` file in this format:
 
@@ -142,8 +145,7 @@ user=$USERNAME
 password=$PASSWORD
 ```
 
-## Microsite
+## Post Maven release steps
 
-The microsite for this project [is available here](https://mrpowers.github.io/spark-stringmetric/).  It's built with the [sbt-microsite](https://github.com/47degrees/sbt-microsites) plugin.
-
-The `sbt publishMicrosite` command creates a new microsite based on the Markdown files stored in the `docs/src/main/mdoc` folder.
+* Create a GitHub release/tag
+* Publish the updated documentation
