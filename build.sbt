@@ -47,10 +47,3 @@ Global/useGpgPinentry := true
 enablePlugins(SiteScaladocPlugin)
 enablePlugins(GhpagesPlugin)
 git.remoteRepo := "git@github.com:MrPowers/spark-stringmetric.git"
-
-// sbt-microsites plugin:
-enablePlugins(MicrositesPlugin)
-micrositeDescription := "String algorithms in Spark"
-micrositeUrl := "https://mrpowers.github.io"
-micrositeBaseUrl := "/spark-stringmetric"
-micrositeDocumentationUrl := "docs"

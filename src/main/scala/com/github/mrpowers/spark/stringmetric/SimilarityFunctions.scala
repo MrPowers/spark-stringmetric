@@ -20,7 +20,7 @@ object SimilarityFunctions {
 
   val cosine_distance = udf[Option[Double], String, String](cosineDistanceFun)
 
-  def cosineDistanceFun(s1: String, s2: String): Option[Double] = {
+  private[stringmetric] def cosineDistanceFun(s1: String, s2: String): Option[Double] = {
     val str1 = Option(s1).getOrElse(return None)
     val str2 = Option(s2).getOrElse(return None)
     val cd = new CosineDistance()
@@ -29,7 +29,7 @@ object SimilarityFunctions {
 
   val fuzzy_score = udf[Option[Integer], String, String](fuzzyScoreFun)
 
-  def fuzzyScoreFun(s1: String, s2: String): Option[Integer] = {
+  private[stringmetric] def fuzzyScoreFun(s1: String, s2: String): Option[Integer] = {
     val str1 = Option(s1).getOrElse(return None)
     val str2 = Option(s2).getOrElse(return None)
     val f = new FuzzyScore(Locale.ENGLISH)
@@ -42,7 +42,7 @@ object SimilarityFunctions {
 
   val jaccard_similarity = udf[Option[Double], String, String](jaccardSimilarityFun)
 
-  def jaccardSimilarityFun(s1: String, s2: String): Option[Double] = {
+  private[stringmetric] def jaccardSimilarityFun(s1: String, s2: String): Option[Double] = {
     val str1 = Option(s1).getOrElse(return None)
     val str2 = Option(s2).getOrElse(return None)
     val j = new JaccardSimilarity()
@@ -51,7 +51,7 @@ object SimilarityFunctions {
 
   val jaro_winkler = udf[Option[Double], String, String](jaroWinlkerFun)
 
-  def jaroWinlkerFun(s1: String, s2: String): Option[Double] = {
+  private[stringmetric] def jaroWinlkerFun(s1: String, s2: String): Option[Double] = {
     val str1 = Option(s1).getOrElse(return None)
     val str2 = Option(s2).getOrElse(return None)
     val j = new JaroWinklerDistance()
