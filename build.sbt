@@ -6,15 +6,15 @@ description := "Popular phonetic and string matching algorithms implemented in S
 organizationName := "MrPowers"
 organizationHomepage := Some(url("https://github.com/MrPowers"))
 
-version := "0.3.0"
-crossScalaVersions := Seq("2.11.12", "2.12.10")
-scalaVersion := "2.11.12"
-val sparkVersion = "2.4.4"
+version := "0.4.0"
+crossScalaVersions := Seq("2.12.12")
+scalaVersion := "2.12.12"
+val sparkVersion = "3.0.1"
 
 libraryDependencies += "org.apache.commons" % "commons-text" % "1.1" % "provided"
 libraryDependencies += "org.apache.spark" %% "spark-sql" % sparkVersion % "provided"
-libraryDependencies += "com.github.mrpowers" %% "spark-fast-tests" % "0.21.3" % "test"
-libraryDependencies += "com.github.mrpowers" %% "spark-daria" % "0.38.2" % "test"
+libraryDependencies += "com.github.mrpowers" %% "spark-fast-tests" % "1.0.0" % "test"
+libraryDependencies += "com.github.mrpowers" %% "spark-daria" % "1.0.0" % "test"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 
 artifactName := { (sv: ScalaVersion, module: ModuleID, artifact: Artifact) =>
