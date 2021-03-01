@@ -17,10 +17,6 @@ libraryDependencies += "com.github.mrpowers" %% "spark-fast-tests" % "1.0.0" % "
 libraryDependencies += "com.github.mrpowers" %% "spark-daria" % "1.0.0" % "test"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 
-artifactName := { (sv: ScalaVersion, module: ModuleID, artifact: Artifact) =>
-  Artifact.artifactName(sv, module, artifact).replaceAll(s"-${module.revision}", s"-${sparkVersion}${module.revision}")
-}
-
 credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credentials")
 
 fork in Test := true
