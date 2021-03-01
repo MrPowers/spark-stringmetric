@@ -1,5 +1,7 @@
 # spark-stringmetric
 
+[![CI](https://github.com/MrPowers/spark-stringmetric/actions/workflows/ci.yml/badge.svg)](https://github.com/MrPowers/spark-stringmetric/actions/workflows/ci.yml)
+
 String similarity functions and phonetic algorithms for Spark.
 
 See [ceja](https://github.com/MrPowers/ceja) if you're using PySpark.
