@@ -18,7 +18,7 @@ libraryDependencies += "com.github.mrpowers" %% "spark-stringmetric" % "0.4.0"
 libraryDependencies += "com.github.mrpowers" %% "spark-stringmetric" % "0.3.0"
 ```
 
-You can find the spark-daria [Scala 2.11 versions here](https://repo1.maven.org/maven2/com/github/mrpowers/spark-stringmetric.11/) and the [Scala 2.12 versions here](https://repo1.maven.org/maven2/com/github/mrpowers/spark-stringmetric.12/).
+You can find the spark-daria [Scala 2.11 versions here](https://repo1.maven.org/maven2/com/github/mrpowers/spark-stringmetric_2.11/) and the [Scala 2.12 versions here](https://repo1.maven.org/maven2/com/github/mrpowers/spark-stringmetric_2.12/).
 
 ## SimilarityFunctions
 
