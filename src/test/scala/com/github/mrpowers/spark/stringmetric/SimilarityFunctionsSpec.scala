@@ -145,50 +145,6 @@ class SimilarityFunctionsSpec
 
     }
 
-    it("computes the hamming metric for multi byte chars") {
-
-      val sourceDF = spark.createDF(
-        List(
-          ("aab", "aaa"),
-          ("aa¢", "aaa"),  // ¢ is 2 bytes
-          ("aaह", "aaa"),  // ह is 3 bytes
-          ("aa€", "aaa"),  // € is 3 bytes
-          ("aa𐍈", "aaa"),  // 𐍈 is 4 bytes
-          ("𐍈€¢", "aaa"),
-          ("𐍈€a¢€b", "b€𐍈𐍈ab"),
-          ("𐍈€a¢€b", "b€𐍈𐍈€b")
-        ), List(
-          ("word1", StringType, true),
-          ("word2", StringType, true)
-        )
-      )
-
-      val actualDF = sourceDF.withColumn(
-        "w1_w2_hamming",
-        SimilarityFunctions.hamming(col("word1"), col("word2"))
-      )
-
-      val expectedDF = spark.createDF(
-        List(
-          ("aab", "aaa", 1),
-          ("aa¢", "aaa", 1),  // ¢ is 2 bytes
-          ("aaह", "aaa", 1),  // ह is 3 bytes
-          ("aa€", "aaa", 1),  // € is 3 bytes
-          ("aa𐍈", "aaa", 1),  // 𐍈 is 4 bytes
-          ("𐍈€¢", "aaa", 3),
-          ("𐍈€a¢€b", "b€𐍈𐍈ab", 4),
-          ("𐍈€a¢€b", "b€𐍈𐍈€b", 3)
-        ), List(
-          ("word1", StringType, true),
-          ("word2", StringType, true),
-          ("w1_w2_hamming", IntegerType, true)
-        )
-      )
-
-      assertSmallDataFrameEquality(actualDF, expectedDF)
-
-    }
-
   }
 
   describe("jaccard_similarity") {

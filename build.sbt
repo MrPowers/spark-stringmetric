@@ -7,15 +7,16 @@ organizationName := "MrPowers"
 organizationHomepage := Some(url("https://github.com/MrPowers"))
 
 version := "0.4.0"
-crossScalaVersions := Seq("2.12.12")
-scalaVersion := "2.12.12"
-val sparkVersion = "3.0.1"
+crossScalaVersions := Seq("2.12.15", "2.13.8")
+scalaVersion := "2.12.15"
+//scalaVersion := "2.13.8"
+val sparkVersion = "3.2.1"
 
 libraryDependencies += "org.apache.commons" % "commons-text" % "1.1" % "provided"
 libraryDependencies += "org.apache.spark" %% "spark-sql" % sparkVersion % "provided"
-libraryDependencies += "com.github.mrpowers" %% "spark-fast-tests" % "1.0.0" % "test"
-libraryDependencies += "com.github.mrpowers" %% "spark-daria" % "1.0.0" % "test"
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
+libraryDependencies += "com.github.mrpowers" %% "spark-fast-tests" % "1.2.0" % "test"
+libraryDependencies += "com.github.mrpowers" %% "spark-daria" % "1.2.3" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.0" % "test"
 
 credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credentials")
 
