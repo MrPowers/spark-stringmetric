@@ -6,7 +6,7 @@ description := "Popular phonetic and string matching algorithms implemented in S
 organizationName := "MrPowers"
 organizationHomepage := Some(url("https://github.com/MrPowers"))
 
-version := "0.4.0"
+version := "0.5.0"
 crossScalaVersions := Seq("2.12.15", "2.13.8")
 scalaVersion := "2.12.15"
 //scalaVersion := "2.13.8"
